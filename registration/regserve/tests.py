@@ -14,7 +14,7 @@ class DataTest(TestCase):
             lastname="Student",
             idnumber=100,
             email="student.first@school.edu",
-            schoolyear="FR",
+            classstanding="FR",
             major="CS",
             gpa="4.0"
         )
@@ -24,7 +24,7 @@ class DataTest(TestCase):
             lastname="Student",
             idnumber=101,
             email="student.second@school.edu",
-            schoolyear="SR",
+            classstanding="SR",
             major="ENG",
             gpa="3.0"
         )
@@ -32,13 +32,12 @@ class DataTest(TestCase):
         self.test_client = Client()
 
     # test case for the REST API
-    # INSTEAD OF PRINT STATEMENTS USE LOGGING OF SOME SORT
+    # TODO: INSTEAD OF PRINT STATEMENTS USE LOGGING OF SOME SORT
     def test_student_api(self):
         students_response = self.test_client.get('/regserve/data/students/')
         print(f'STUDENT API TEST - inside test, response is:\n{students_response}\n\
             and status code is:\n{students_response.status_code}\n')
         self.assertEqual(students_response.status_code, 200)
-
         print(f'STUDENT API TEST - inside test, response content is:\n\
             {students_response.content} \n')
         student_stream = io.BytesIO(students_response.content)
