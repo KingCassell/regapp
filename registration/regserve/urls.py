@@ -2,9 +2,12 @@ from django.urls import path
 
 from . import views
 
-applications = 'regserve'
+app_name = 'regserve'
 
 urlpatterns = [
-    path('', views.index, name='index')
+    path('/students/', views.StudentListForm.as_view(), name='students'),
+    path('/createstudent/', views.StudentCreateForm.as_view()),
+    path('/data/students', views.StudentListCreate.as_view()),
+    path('', views.index, name='index'),
 ]
 
