@@ -64,7 +64,6 @@ class DataTest(TestCase):
         self.assertEqual(first_student_api, first_student_db)
 
 
-    # name of the test function must start with "test" in order to run
     def test_student(self):
         student_list = Student.objects.all()
         for student in student_list:
