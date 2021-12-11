@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('regserve', include('regserve.urls')),
-    url(r'^admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
 ]
