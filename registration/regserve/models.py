@@ -29,9 +29,9 @@ class Person(models.Model):
     
 
 
-class Student(models.Model):
+class Student(Person):
     # Must match DBMS
-    YEAR_IN_SCHOOL = [
+    CLASS_STANDING = [
         ('FR', 'Freshman'),
         ('SO', 'Sophomore'),
         ('JR', 'Junior'),
@@ -50,11 +50,18 @@ class Student(models.Model):
     ]
 
     studentid = models.PositiveIntegerField(blank=True, validators = {MinValueValidator(1)})
-    
+    classstanding = models.CharField(max_length=2, choices=CLASS_STANDING)
+    major = models.CharField(max_length=3, choices=MAJORS)
+    gpa = models.FloatField(blank=True, max_length=4)
 
+    ## Getter for the url for student info
+    def get_absolute_url(self):
+        return reverse_lazy('regserve:students')
 
-
-# Create your models here.
-
-def get_absolute_url(self):
-    return reverse_lazy('regserve:students')
+    ## To_String for the Student Class
+    def __str__(self):
+        return f'''Student ID: {self.studentid},
+                {super(Student, self).__str__()}, # nnherit from Person Class
+                Class Standing: {self.classstanding},
+                Major: {self.major},
+                GPA: {self.gpa}'''
