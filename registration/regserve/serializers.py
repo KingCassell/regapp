@@ -5,9 +5,20 @@ from .models import *
 class StudenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = {}
+        fields = {'id', 
+                'firstname',
+                'lastname',
+                'idnumber',
+                'email',
+                'classstanding',
+                'major',
+                'gpa',
+                'datecreated',
+                'datemodified'}
+        read_only_fields = ('datecreated',
+                            'datemodified')
 
-    def create():
-
+    def create(self, validated_data):
+        return Student(**validated_data)
 
 
