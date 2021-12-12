@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.core import validators
+
 # necessary data model imports
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
@@ -17,15 +18,13 @@ class Person(models.Model):
     datecreated = models.DateTimeField(blank=True, auto_now_add=True)
     datemodified = models.DateTimeField(blank=True, auto_now=True)
 
-    # Getters for models
+    # Getter for the full person name for models
     @property
     def get_full_name(self):
         return f'{self.firstname} {self.lastname}'
     
     def __str__(self):
-        return f'''Name: {self.get_full_name}, 
-                ID Number: {self.idnumber},
-                email: {self.email}'''
+        return f'Name: {self.get_full_name}, ID Number: {self.idnumber}, email: {self.email}'
     
 
 
@@ -60,8 +59,4 @@ class Student(Person):
 
     ## To_String for the Student Class
     def __str__(self):
-        return f'''Student ID: {self.studentid},
-                {super(Student, self).__str__()}, # nnherit from Person Class
-                Class Standing: {self.classstanding},
-                Major: {self.major},
-                GPA: {self.gpa}'''
+        return f'Student ID: {self.studentid}, {super(Student, self).__str__()}, Class Standing: {self.classstanding}, Major: {self.major}, GPA: {self.gpa}'
