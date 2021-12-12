@@ -32,7 +32,7 @@ class DataTest(TestCase):
         self.test_client = Client()
 
     # test case for the REST API
-    # TODO: INSTEAD OF PRINT STATEMENTS USE LOGGING OF SOME SORT
+    # TODO: INSTEAD OF PRINT STATEMENTS USE LOGGING
     def test_student_api(self):
         students_response = self.test_client.get('/regserve/data/students/')
         print(f'STUDENT API TEST - inside test, response is:\n{students_response}\n\
@@ -72,12 +72,11 @@ class DataTest(TestCase):
         self.assertEqual(student.id, 1)
         self.assertEqual(student.full_name, "First Student")
         self.assertEqual(student.idnumber, 100)
-        self.assertEqual(student.schoolyear, 'FR')
+        self.assertEqual(student.classstanding, 'FR')
         self.assertEqual(student.major, "CS")
         self.assertEqual(student.gpa, 4.0)
 
 class SimpleTest(TestCase):
-    # function that executes every time before tests
     def setUp(self):
         self.test_client = Client()
 
