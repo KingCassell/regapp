@@ -20,4 +20,9 @@ class StudentListForm(ListView):
 
 class StudentCreateForm(CreateView, ListView):
     model = Student
-    fields = ['firstname', 'lastname', 'idnumber', 'classstanding', 'major', 'gpa']
+    fields = ['firstname', 
+              'lastname', 
+              'idnumber', 
+              'classstanding', 
+              'major', 
+              'gpa']
